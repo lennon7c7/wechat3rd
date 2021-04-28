@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"encoding/xml"
 	"errors"
+	"github.com/go-redis/redis/v8"
 	"github.com/lennon7c7/wechat3rd/util"
 	"io/ioutil"
 	"net/http"
@@ -82,12 +83,15 @@ type cipherRequestHttpBody struct {
 	Base64EncryptedMsg []byte   `xml:"Encrypt"`
 }
 
-func NewService(cfg Config, ticket TicketServer, tokenService AccessTokenServer, errHandler WechatErrorer) (s *Server, err error) {
+func NewService(cfg Config, cache *redis.Client, ticket TicketServer, tokenService AccessTokenServer, errHandler WechatErrorer) (s *Server, err error) {
 	err = cfg.check()
 	if err != nil {
 		return nil, err
 	}
 
+	if cache != nil {
+		util.Cache = cache
+	}
 	if errHandler == nil {
 		errHandler = DefaultErrorHandler
 	}

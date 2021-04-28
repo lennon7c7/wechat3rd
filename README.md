@@ -23,18 +23,23 @@
 #### 2.2: 使用NewService方法来创建一个service
 
     NewService的参数分别是:
-    Config: 配置信息
-    TicketServer: 保存微信传输的ticket信息接口
-    AccessTokenServer: 获取第三方平台的token接口
-    WechatErrorer: 错误信息的处理
+    Config:             配置信息
+    redis.Client:       缓存
+    TicketServer:       保存微信传输的ticket信息接口
+    AccessTokenServer:  获取第三方平台的token接口
+    WechatErrorer:      错误信息的处理
 
     // 除Config外的其它参数传nil则使用默认配置.  该处代码你应该使用单例模式或服务池方式来管理
-    service,err:=wechat3rd.NewService(wechat3rd.Config{
-        AppID:     os.Getenv("WX_OPEN_APP_ID"), //第三方平台appid
-        AppSecret: os.Getenv("WX_OPEN_APP_SECRET"), //第三方平台app_secret
-        AESKey:    os.Getenv("WX_AES_KEY"), //第三方平台消息加解密Key
-        Token:     os.Getenv("WX_AES_TOKEN"), //消息校验Token
-    },nil,nil,nil)
+	service, err := wechat3rd.NewService(wechat3rd.Config{
+		AppID:     AppID,
+		AppSecret: AppSecret,
+		AESKey:    AESKey,
+		Token:     Token,
+	}, redis.NewClient(&redis.Options{
+		Addr:     RedisAddr,
+		Password: RedisPassword,
+		DB:       RedisDB,
+	}), nil, nil, nil)
 
     if err!=nil{
         panic("wechat3rd初始化失败:"+err.Error())

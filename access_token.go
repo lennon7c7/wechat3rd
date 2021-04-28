@@ -2,6 +2,7 @@ package wechat3rd
 
 import (
 	"github.com/lennon7c7/wechat3rd/core"
+	"github.com/lennon7c7/wechat3rd/util"
 	"time"
 )
 
@@ -24,10 +25,15 @@ type DefaultAccessTokenServer struct {
 
 // token不使用不获取
 func (d *DefaultAccessTokenServer) Token() (token string, err error) {
-	var(
+	var (
 		ticket string
-		resp *AccessTokenResp
+		resp   *AccessTokenResp
 	)
+
+	token, _ = util.CacheGetString("cachekey_of_wechat3rd_token")
+	if token != "" {
+		return
+	}
 
 	if d.ExpiresIn <= time.Now().Unix()-30 {
 		ticket, err = d.GetTicket()
@@ -42,6 +48,12 @@ func (d *DefaultAccessTokenServer) Token() (token string, err error) {
 		if err != nil {
 			return
 		}
+
+		err = util.CacheSetString("cachekey_of_wechat3rd_token", resp.ComponentAccessToken, time.Hour*2)
+		if err != nil {
+			return
+		}
+
 		d.ExpiresIn = time.Now().Unix() + resp.ExpiresIn
 		d.ComponentAccessToken = resp.ComponentAccessToken
 	}
