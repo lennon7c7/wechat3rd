@@ -1,3 +1,3 @@
-module github.com/l306287405/wechat3rd
+module github.com/lennon7c7/wechat3rd
 
 go 1.13

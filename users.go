@@ -5,7 +5,7 @@ import (
 	"crypto/cipher"
 	"encoding/base64"
 	"errors"
-	"github.com/l306287405/wechat3rd/core"
+	"github.com/lennon7c7/wechat3rd/core"
 	"net/url"
 )
 

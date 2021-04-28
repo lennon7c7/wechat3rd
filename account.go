@@ -1,7 +1,7 @@
 package wechat3rd
 
 import (
-	"github.com/l306287405/wechat3rd/core"
+	"github.com/lennon7c7/wechat3rd/core"
 )
 
 type GetAccountBasicInfoResp struct {

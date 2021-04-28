@@ -1,8 +1,8 @@
 ### 项目地址
-[l306287405/wechat3rd](https://github.com/l306287405/wechat3rd)
+[lennon7c7/wechat3rd](https://github.com/lennon7c7/wechat3rd)
 
 ### 感谢
-项目基于 [owen-gxz/open-wechat](https://github.com/owen-gxz/open-wechat) 做了原方法改动以及添加对新接口的支持并补充使用说明.
+项目基于 [l306287405/wechat3rd](https://github.com/l306287405/wechat3rd) 做了原方法改动以及添加对新接口的支持并补充使用说明.
 
 ### 1.简介
 
@@ -16,9 +16,9 @@
 有任何问题请提issue, 我会尽快解决.
 
 #### 2.1: 引入
-    go get -u github.com/l306287405/wechat3rd@master
+    go get -u github.com/lennon7c7/wechat3rd@master
     or
-    go get -u github.com/l306287405/wechat3rd@v1.5.0 (请选择最新版本)
+    go get -u github.com/lennon7c7/wechat3rd@v1.5.0 (请选择最新版本)
 
 #### 2.2: 使用NewService方法来创建一个service
 

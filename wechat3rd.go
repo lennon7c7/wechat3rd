@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"encoding/xml"
 	"errors"
-	"github.com/l306287405/wechat3rd/util"
+	"github.com/lennon7c7/wechat3rd/util"
 	"io/ioutil"
 	"net/http"
 	"strings"

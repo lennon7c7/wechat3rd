@@ -3,7 +3,7 @@ package wechat3rd
 import (
 	"errors"
 	"fmt"
-	"github.com/l306287405/wechat3rd/core"
+	"github.com/lennon7c7/wechat3rd/core"
 )
 
 type AuthType string

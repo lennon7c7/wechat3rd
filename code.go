@@ -2,7 +2,7 @@ package wechat3rd
 
 import (
 	"errors"
-	"github.com/l306287405/wechat3rd/core"
+	"github.com/lennon7c7/wechat3rd/core"
 	"net/http"
 	"net/url"
 	"os"
